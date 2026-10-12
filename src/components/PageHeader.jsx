@@ -1,0 +1,1 @@
+export default function PageHeader({title,subtitle,actions}){return <div className="page-heading d-flex align-items-center justify-content-between gap-3 flex-wrap"><div><h1>{title}</h1>{subtitle&&<p>{subtitle}</p>}</div><div className="d-flex gap-2">{actions}</div></div>}

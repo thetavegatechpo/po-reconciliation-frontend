@@ -1,0 +1,22 @@
+/* Scoped to the Invoice Create/Edit modal only. No global Bootstrap overrides. */
+.invoice-entry-dialog { width: min(96vw, 1320px); max-width: 1320px; margin-left: auto; margin-right: auto; }
+.invoice-entry-dialog .modal-content { border: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 70px rgba(12, 26, 48, .24); }
+.invoice-entry-dialog .modal-header { padding: 16px 24px; background: #fff; }
+.invoice-entry-dialog .modal-title { font-size: 1.18rem; font-weight: 650; }
+.invoice-entry-dialog .invoice-entry-body { padding: 22px 24px 26px; overflow-y: auto; max-height: calc(100dvh - 195px); background: #f8fafc; }
+.invoice-entry-dialog .invoice-entry-footer { padding: 14px 24px; background: #fff; border-top: 1px solid #e5eaf0; }
+.invoice-entry-intro { display:flex; justify-content:space-between; align-items:center; gap:16px; padding: 12px 16px; background:#fff; border:1px solid #e3e8f1; border-radius:10px; }
+.invoice-entry-step { font-size: .75rem; font-weight: 650; color: #3856a6; background: #eef3ff; padding:6px 10px; border-radius:6px; white-space:nowrap; }
+.invoice-po-panel { padding: 18px; border: 1px solid #dde6f1; border-radius: 11px; background:#fff; }
+.invoice-section-top { display:flex; align-items:center; justify-content:space-between; gap: 16px; }
+.invoice-section-eyebrow { font-size:.66rem; letter-spacing:.09em; font-weight:750; color:#5273b2; margin-bottom:3px; }
+.invoice-po-count { white-space:nowrap; border-radius:20px; background:#f0f5ff; color:#345391; font-size:.76rem; font-weight:650; padding:6px 12px; }
+.invoice-alloc-table { font-size:.82rem; border-color: #e6ebf2; }
+.invoice-alloc-table thead th { background:#f2f5fa; color:#48566f; font-size:.74rem; font-weight:650; padding: 11px 10px; white-space:nowrap; }
+.invoice-alloc-table tbody td { padding:10px; }
+.invoice-allocation-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.invoice-allocation-summary>div { min-width:0; display:flex; flex-direction:column; gap:4px; padding:10px 14px; background:#f6f8fc; border:1px solid #e7ecf4; border-radius:8px; }
+.invoice-allocation-summary strong { font-size:1.13rem; }
+.invoice-entry-dialog .form-label { margin-bottom:5px; font-size:.82rem; }
+.invoice-entry-dialog .form-control,.invoice-entry-dialog .form-select { min-height:38px; }
+@media(max-width:767px){ .invoice-entry-dialog{width:calc(100vw - 12px); margin:6px auto;} .invoice-entry-dialog .invoice-entry-body{padding:12px;max-height:calc(100dvh - 150px);} .invoice-entry-dialog .modal-header,.invoice-entry-dialog .invoice-entry-footer{padding:12px;} .invoice-po-panel{padding:12px;} .invoice-entry-step{display:none;} .invoice-allocation-summary{grid-template-columns:1fr;} }

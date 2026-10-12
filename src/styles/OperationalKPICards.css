@@ -1,0 +1,139 @@
+/* Shared operational KPI cards — does not target the main Dashboard.
+   Add tv-kpi-row to the existing React-Bootstrap KPI <Row> only. */
+
+:root {
+  --tv-kpi-surface: #ffffff;
+  --tv-kpi-text: #202a46;
+  --tv-kpi-muted: #74809a;
+  --tv-kpi-border: #e6eaf2;
+  --tv-kpi-shadow: 0 2px 9px rgba(32, 42, 70, .035);
+  --tv-kpi-hover-shadow: 0 14px 32px rgba(33, 43, 82, .105);
+}
+
+.tv-kpi-row {
+  --tv-kpi-accent: #6554d8;
+}
+
+.tv-kpi-row > [class*="col"] > .card,
+.tv-kpi-row > [class*="col"] > .tv-panel {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--tv-kpi-surface);
+  color: var(--tv-kpi-text);
+  border: 1px solid var(--tv-kpi-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--tv-kpi-shadow) !important;
+  transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+  animation: tv-kpi-arrive .42s both;
+}
+
+.tv-kpi-row > [class*="col"]:nth-child(2) { --tv-kpi-accent: #16856b; }
+.tv-kpi-row > [class*="col"]:nth-child(3) { --tv-kpi-accent: #d78a34; }
+.tv-kpi-row > [class*="col"]:nth-child(4) { --tv-kpi-accent: #536cda; }
+
+.tv-kpi-row > [class*="col"]:nth-child(2) > .card { animation-delay: .055s; }
+.tv-kpi-row > [class*="col"]:nth-child(3) > .card { animation-delay: .11s; }
+.tv-kpi-row > [class*="col"]:nth-child(4) > .card { animation-delay: .165s; }
+
+.tv-kpi-row > [class*="col"] > .card::before,
+.tv-kpi-row > [class*="col"] > .tv-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--tv-kpi-accent);
+  opacity: .65;
+  transition: opacity .24s ease, width .24s ease;
+}
+
+.tv-kpi-row > [class*="col"] > .card::after,
+.tv-kpi-row > [class*="col"] > .tv-panel::after {
+  content: "";
+  position: absolute;
+  top: -48px;
+  right: -42px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--tv-kpi-accent);
+  opacity: .045;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.tv-kpi-row > [class*="col"] > .card:hover,
+.tv-kpi-row > [class*="col"] > .tv-panel:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--tv-kpi-accent) 25%, var(--tv-kpi-border)) !important;
+  box-shadow: var(--tv-kpi-hover-shadow) !important;
+}
+
+.tv-kpi-row > [class*="col"] > .card:hover::before,
+.tv-kpi-row > [class*="col"] > .tv-panel:hover::before { width: 4px; opacity: 1; }
+
+.tv-kpi-row .card-body { padding: 19px 21px !important; }
+
+.tv-kpi-row .card-body > small:first-child,
+.tv-kpi-row .card-body > .text-muted:first-child,
+.tv-kpi-row .mini-metric > span:first-child {
+  display: block;
+  color: var(--tv-kpi-muted) !important;
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  line-height: 1.45;
+}
+
+.tv-kpi-row .card-body > h4,
+.tv-kpi-row .card-body > h3,
+.tv-kpi-row .card-body > h2,
+.tv-kpi-row .card-body > strong.fs-5,
+.tv-kpi-row .mini-metric > b {
+  color: var(--tv-kpi-text) !important;
+  font-size: clamp(1.35rem, 1.65vw, 1.8rem) !important;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.tv-kpi-row .card-body > small:last-child {
+  color: var(--tv-kpi-muted) !important;
+  line-height: 1.5;
+}
+
+.tv-kpi-row .bi,
+.tv-kpi-row svg {
+  transition: transform .24s ease;
+}
+.tv-kpi-row .card:hover .bi,
+.tv-kpi-row .card:hover svg { transform: translateY(-2px) scale(1.045); }
+
+@keyframes tv-kpi-arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Match either common dark-mode strategy, without impacting other cards. */
+[data-bs-theme="dark"] .tv-kpi-row,
+[data-theme="dark"] .tv-kpi-row,
+.dark .tv-kpi-row {
+  --tv-kpi-surface: #20283a;
+  --tv-kpi-text: #f2f5ff;
+  --tv-kpi-muted: #b1bdd1;
+  --tv-kpi-border: #384259;
+  --tv-kpi-shadow: 0 2px 10px rgba(0, 0, 0, .16);
+  --tv-kpi-hover-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tv-kpi-row > [class*="col"] > .card,
+  .tv-kpi-row > [class*="col"] > .tv-panel { animation: none; transition: none; }
+  .tv-kpi-row .bi,
+  .tv-kpi-row svg { transition: none; }
+  .tv-kpi-row > [class*="col"] > .card:hover,
+  .tv-kpi-row > [class*="col"] > .tv-panel:hover { transform: none; }
+}

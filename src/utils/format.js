@@ -1,0 +1,1 @@
+export const money=(v)=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(Number(v||0));export const date=(v)=>v?new Date(v).toLocaleDateString('en-IN'):'—';export const statusLabel=(s='')=>s.replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
